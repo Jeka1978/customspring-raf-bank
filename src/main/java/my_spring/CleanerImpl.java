@@ -1,10 +1,17 @@
 package my_spring;
 
+import java.util.stream.IntStream;
+
 /**
  * @author Evgeny Borisov
  */
 public class CleanerImpl implements Cleaner {
+
+    @InjectRandomInt(min = 3,max = 7)
+    private int repeat;
     public void clean() {
-        System.out.println("VVVVVVVVVVvvvvvvvvvvvvvv");
+        IntStream.range(0, repeat)
+                .mapToObj(i -> "VVVVVVVVVVvvvvvvvvvvvvvv")
+                .forEach(System.out::println);
     }
 }
